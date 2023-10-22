@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, watch } from "vue";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -8,23 +8,17 @@ function sleep(ms) {
 const first = ref(0);
 const second = ref(0);
 
-watchEffect(async () => {
-  console.log("first run", first);
-  // await sleep(1000);
-
-  // second.value = first.value;
-  // first.value = second.value;
+watch(first, async (newValue, oldValue) => {
+  console.log("First changed from", oldValue, "to", newValue);
+  console.log(second.value);
 });
-
-function run() {
-  first.value++;
-}
 </script>
 
 <template>
   <div>
     <h1>Hi there</h1>
-    <button @click="run">Click me</button>
+    <button @click="first++">Increase first</button>
+    <button @click="second++">Increase second</button>
     <p>First: {{ first }}</p>
     <p>Second: {{ second }}</p>
   </div>
