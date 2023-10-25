@@ -1,27 +1,17 @@
 <script setup>
-import { ref, watch } from "vue";
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const first = ref(0);
-const second = ref(0);
-
-watch(first, async (newValue, oldValue) => {
-  console.log("First changed from", oldValue, "to", newValue);
-  console.log(second.value);
-});
+import Clock from "./Clock.vue";
 </script>
 
 <template>
-  <div>
-    <h1>Hi there</h1>
-    <button @click="first++">Increase first</button>
-    <button @click="second++">Increase second</button>
-    <p>First: {{ first }}</p>
-    <p>Second: {{ second }}</p>
+  <div class="wrapper">
+    <Clock />
   </div>
 </template>
 
-<style scoped></style>
+<style>
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
