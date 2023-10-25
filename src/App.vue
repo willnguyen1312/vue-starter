@@ -1,27 +1,7 @@
 <script setup>
-import { ref, watch } from "vue";
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const first = ref(0);
-const second = ref(0);
-
-watch(first, async (newValue, oldValue) => {
-  console.log("First changed from", oldValue, "to", newValue);
-  console.log(second.value);
-});
+import MemoryGame from "./MemoryGame.vue";
 </script>
 
 <template>
-  <div>
-    <h1>Hi there</h1>
-    <button @click="first++">Increase first</button>
-    <button @click="second++">Increase second</button>
-    <p>First: {{ first }}</p>
-    <p>Second: {{ second }}</p>
-  </div>
+  <MemoryGame :rows="2" :cols="2" :delay="2000" :matchCount="2" />
 </template>
-
-<style scoped></style>
