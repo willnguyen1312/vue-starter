@@ -1,27 +1,12 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from 'vue';
+import Comp from './Comp.vue';
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const first = ref(0);
-const second = ref(0);
-
-watch(first, async (newValue, oldValue) => {
-  console.log("First changed from", oldValue, "to", newValue);
-  console.log(second.value);
-});
+const value = ref([1])
 </script>
 
 <template>
-  <div>
-    <h1>Hi there</h1>
-    <button @click="first++">Increase first</button>
-    <button @click="second++">Increase second</button>
-    <p>First: {{ first }}</p>
-    <p>Second: {{ second }}</p>
-  </div>
-</template>
+<Comp :value="value" />
 
-<style scoped></style>
+<button @click="value.push(value.length + 1)">Increment</button>
+</template>
