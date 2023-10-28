@@ -8,7 +8,7 @@ const props = defineProps({
 const display = computed(() => props.value.length * 2)
 
 watch(props, () => {
-    console.log(props.value)
+    // console.log(props.value)
 })
 </script>
 
