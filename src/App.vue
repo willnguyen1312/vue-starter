@@ -1,5 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref, watch, watchEffect } from "vue";
+import type { HELLO } from "./types";
+
+const a: HELLO = "hello";
 
 import {
   GAME_STATE,
